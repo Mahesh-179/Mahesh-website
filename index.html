@@ -427,7 +427,7 @@
         .project-card:hover .project-image img {
             transform: scale(1.1);
         }
-        
+    
         .project-image .project-category {
             position: absolute;
             top: 1rem;
@@ -912,6 +912,273 @@
                 font-size: 1.8rem;
             }
         }
+         /* Certifications Section */
+         .certifications {
+            background-color: #f1f5f9;
+            position: relative;
+        }
+        
+        .certifications::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1), transparent 70%);
+            z-index: 0;
+        }
+        
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .certification-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .certification-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .certification-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .certification-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .certification-card:hover .certification-image img {
+            transform: scale(1.05);
+        }
+        
+        .certification-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .certification-image:hover .certification-overlay {
+            opacity: 1;
+        }
+        
+        .certification-overlay i {
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .certification-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .certification-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .certification-content .issuer {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .certification-content .date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .certification-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+        
+        .certification-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        /* Modal for Certificate Viewer */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1100;
+            overflow: auto;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .modal-header {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        .modal-header h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+        
+        .modal-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .modal-body img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .certificate-details {
+            margin-top: 2rem;
+            width: 100%;
+        }
+        
+        .certificate-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .certificate-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        
+        .meta-item i {
+            color: var(--primary);
+            margin-top: 3px;
+        }
+        
+        .meta-item div span {
+            display: block;
+        }
+        
+        .meta-item div span:first-child {
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .meta-item div span:last-child {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .modal-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--gray);
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+            
+            .certificate-meta {
+                grid-template-columns: 1fr;
+            }
+        }
+        
     </style>
 </head>
 <body>
@@ -1008,8 +1275,7 @@
                                         <p>A secure and efficient ATM simulation with account management, transaction processing, and admin features. Implements OOP principles with user authentication and transaction history.</p>
                                         <div class="project-tech">
                                             <span>Python</span>
-                                            <span>OOP</span>
-                                            <span>File Handling</span>
+                                            <span>Conditional</span>
                                             <span>Encryption</span>
                                         </div>
                                         <div class="project-links">
@@ -1034,9 +1300,7 @@
                                         <p>Comprehensive solution for cafe operations including order management, inventory tracking, and sales reporting with a user-friendly console interface and data persistence.</p>
                                         <div class="project-tech">
                                             <span>Python</span>
-                                            <span>SQLite</span>
-                                            <span>Data Structures</span>
-                                            <span>CLI</span>
+                                            <span>Conditional</span>
                                         </div>
                                         <div class="project-links">
                                             <a href="https://github.com/Mahesh-179/Cafe-Management-System.git" target="_blank" class="btn btn-outline">
@@ -1052,12 +1316,12 @@
                                 <!-- Weather Dashboard -->
                                 <div class="project-card animate__animated animate__fadeInUp">
                                     <div class="project-image">
-                                        <img src="weather.jpg" alt="Weather Dashboard">
+                                        <img src="grade.png" alt="Weather Dashboard">
                                         <span class="project-category">Web App</span>
                                     </div>
                                     <div class="project-content">
-                                        <h3>Weather Dashboard</h3>
-                                        <p>Interactive weather application that displays current conditions and forecasts using API data. Features location search, temperature units toggle, and responsive design.</p>
+                                        <h3>Student Grade Management System</h3>
+                                        <p>Interactive Grade Management application that displays Student total grades. Features input data, process, and display student grade marks.</p>
                                         <div class="project-tech">
                                             <span>HTML/CSS</span>
                                             <span>JavaScript</span>
@@ -1085,10 +1349,9 @@
                                         <h3>Task Manager</h3>
                                         <p>Productivity application for task management with features like priority setting, due dates, categories, and progress tracking. Built with a clean, intuitive interface.</p>
                                         <div class="project-tech">
-                                            <span>Python</span>
-                                            <span>Flask</span>
-                                            <span>SQLAlchemy</span>
-                                            <span>Jinja2</span>
+                                            <span>HTML</span>
+                                            <span>JavaScript</span>
+                                            <span>CSS</span>
                                         </div>
                                         <div class="project-links">
                                             <a href="#" class="btn btn-outline">
@@ -1128,6 +1391,123 @@
                                 </div>
                 
                     </section>
+                    
+                       <!-- Certifications Section (Add this after Skills section) -->
+    <section id="certifications" class="certifications section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>My Certifications</h2>
+                <p>Official recognition of my skills and knowledge</p>
+            </div>
+            <div class="certifications-grid">
+                <!-- Certification 1 -->
+                <div class="certification-card animate__animated animate__fadeInUp">
+                    <div class="certification-image">
+                        <img src="python.jpg" alt="Python Programming Certification">
+                        <div class="certification-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                        <span class="certification-badge">Verified</span>
+                    </div>
+                    <div class="certification-content">
+                        <h3>Python Programming</h3>
+                        <p class="issuer">Great Learning </p>
+                        <p class="date">Issued May 2023</p>
+                        <p>Comprehensive certification covering Python fundamentals</p>
+                        <a href="#" class="btn btn-outline" style="margin-top: auto;">
+                            <i class="fas fa-external-link-alt"></i> View Credential
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Certification 2 -->
+                <div class="certification-card animate__animated animate__fadeInUp">
+                    <div class="certification-image">
+                        <img src="web.jpg" alt="Web Development Certification">
+                        <div class="certification-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="certification-content">
+                        <h3>Web Development Fundamentals</h3>
+                        <p class="issuer">The Digital Adda</p>
+                        <p class="date">Issued March 2023</p>
+                        <p>Certification covering HTML5, CSS3, JavaScript, and responsive design principles.</p>
+                        <a href="#" class="btn btn-outline" style="margin-top: auto;">
+                            <i class="fas fa-external-link-alt"></i> View Credential
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Certification 3 -->
+                <div class="certification-card animate__animated animate__fadeInUp">
+                    <div class="certification-image">
+                        <img src="django.jpg" alt="SQL Certification">
+                        <div class="certification-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                        <span class="certification-badge">Verified</span>
+                    </div>
+                    <div class="certification-content">
+                        <h3>Python With Django Training</h3>
+                        <p class="issuer">Broadways Infosys</p>
+                        <p class="date">Issued January 2023</p>
+                        <p>Certification demonstrating proficiency in Python, django, and Webframe Work.</p>
+                        <a href="#" class="btn btn-outline" style="margin-top: auto;">
+                            <i class="fas fa-external-link-alt"></i> View Credential
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Certificate Viewer -->
+    <div class="modal" id="certificateModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Certificate Details</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="" alt="Certificate" id="modalCertificateImage">
+                <div class="certificate-details">
+                    <h4 id="modalCertificateTitle"></h4>
+                    <div class="certificate-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-university"></i>
+                            <div>
+                                <span>Issuer</span>
+                                <span id="modalCertificateIssuer"></span>
+                            </div>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <span>Issued Date</span>
+                                <span id="modalCertificateDate"></span>
+                            </div>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-link"></i>
+                            <div>
+                                <span>Credential ID</span>
+                                <span id="modalCertificateId"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <p id="modalCertificateDescription"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-outline" id="modalCertificateLink" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> Verify Credential
+                </a>
+                <button class="btn btn-primary close-modal">Close</button>
+            </div>
+        </div>
+    </div>
+            
                 
                     <!-- Skills Section -->
                     <section id="skills" class="skills section-padding">
@@ -1268,7 +1648,7 @@
                         </div>
                     </section>
                 
-                    <!-- Footer -->
+        <!-- Footer -->
                     <footer>
                         <div class="container">
                             <div class="footer-content">
@@ -1419,6 +1799,57 @@
                                 this.reset();
                             });
                         }
+                        // Certificate Modal Functionality
+        const certificationCards = document.querySelectorAll('.certification-card');
+        const modal = document.getElementById('certificateModal');
+        const modalImage = document.getElementById('modalCertificateImage');
+        const modalTitle = document.getElementById('modalCertificateTitle');
+        const modalIssuer = document.getElementById('modalCertificateIssuer');
+        const modalDate = document.getElementById('modalCertificateDate');
+        const modalId = document.getElementById('modalCertificateId');
+        const modalDescription = document.getElementById('modalCertificateDescription');
+        const modalLink = document.getElementById('modalCertificateLink');
+        const closeButtons = document.querySelectorAll('.close-modal');
+
+        certificationCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const imgSrc = this.querySelector('img').src;
+                const title = this.querySelector('h3').textContent;
+                const issuer = this.querySelector('.issuer').textContent;
+                const date = this.querySelector('.date').textContent;
+                const description = this.querySelector('p:not(.issuer):not(.date)').textContent;
+                
+                modalImage.src = imgSrc;
+                modalTitle.textContent = title;
+                modalIssuer.textContent = issuer;
+                modalDate.textContent = date;
+                modalDescription.textContent = description;
+                
+                // Set a sample credential ID (replace with actual data)
+                modalId.textContent = "ID-"+Math.random().toString(36).substr(2, 9).toUpperCase();
+                
+                // Set verify link (replace # with actual link)
+                modalLink.href = "#";
+                
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
                     </script>
                 </body>
                 </html>
